@@ -1,1 +1,243 @@
 # -english-learning
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>English Learning | Mr. Namnam</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f5;
+      color: #263238;
+    }
+
+    header {
+      background: #174f5c;
+      color: white;
+      padding: 25px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 15px;
+    }
+
+    .hero {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 70px 10%;
+      background: #e8f0ee;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      color: #174f5c;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #d49a45;
+      color: white;
+      padding: 15px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .teacher {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      width: 280px;
+    }
+
+    .teacher-icon {
+      font-size: 80px;
+      margin-bottom: 15px;
+    }
+
+    .teacher h2 {
+      color: #174f5c;
+      margin-bottom: 8px;
+    }
+
+    .teacher p {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .sections {
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    .sections h2 {
+      color: #174f5c;
+      margin-bottom: 35px;
+      font-size: 32px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .card span {
+      font-size: 40px;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+      color: #174f5c;
+    }
+
+    footer {
+      background: #174f5c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 750px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">English Learning</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#lessons">Lessons</a>
+      <a href="#teacher">Mr. Namnam</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+
+    <div class="hero-text">
+      <h1>Learn English.</h1>
+
+      <p>
+        Learn English step by step with simple lessons,
+        useful examples, and your friendly teacher
+        <strong>Mr. Namnam</strong>.
+      </p>
+
+      <a class="button" href="#teacher">
+        Meet Mr. Namnam
+      </a>
+    </div>
+
+    <div class="teacher" id="teacher">
+
+      <div class="teacher-icon">👨🏻‍🏫</div>
+
+      <h2>Mr. Namnam</h2>
+
+      <p>Your friendly English teacher</p>
+
+      <a class="button" href="#">
+        Start Chat
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="sections" id="lessons">
+
+    <h2>Learn English</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <span>📚</span>
+        <h3>Grammar</h3>
+        <p>Learn simple English grammar with easy explanations.</p>
+      </div>
+
+      <div class="card">
+        <span>📝</span>
+        <h3>Practice</h3>
+        <p>Practice what you learn with simple questions.</p>
+      </div>
+
+      <div class="card">
+        <span>👨🏻‍🏫</span>
+        <h3>Ask Namnam</h3>
+        <p>Chat with Mr. Namnam and ask your English questions.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 English Learning — Mr. Namnam
+  </footer>
+
+</body>
+</html>
