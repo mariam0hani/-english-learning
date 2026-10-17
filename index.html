@@ -1,236 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<nav>
+  <a href="#">Home</a>
+  <a href="#lessons">Lessons</a>
+  <a href="#teacher">Wamd AI</a>
+</nav>
 
-  <title>منصة وَمْض | Wamd AI</title>
+<div class="hero-text">
+  <h1>Learn English.</h1>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <p>
+    Learn English step by step with simple lessons,
+    useful examples, and your friendly AI teacher
+    <strong>Wamd AI</strong>.
+  </p>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #F5F1E9;
-      color: #8B6F5D;
-    }
+  <button class="button" onclick="window.chatbase('open')">Meet Wamd AI</button>
+</div>
 
-    header {
-      background: #0D5C3A;
-      color: white;
-      padding: 25px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+<div class="teacher" id="teacher">
+  <div class="teacher-icon">👨🏻‍🏫</div>
+  <h2>Wamd AI</h2>
+  <p>Your friendly English teacher</p>
+  <button class="button" onclick="window.chatbase('open')">Start Chat</button>
+</div>
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
+<h2>Learn English with Wamd AI</h2>
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 15px;
-    }
+<div class="cards">
 
-    .hero {
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 70px 10%;
-      background: #F5F1E9;
-    }
+  <div class="card">
+    <span>📚</span>
+    <h3>Grammar</h3>
+    <p>Learn simple English grammar with easy explanations.</p>
+  </div>
 
-    .hero-text {
-      max-width: 550px;
-    }
+  <div class="card">
+    <span>📝</span>
+    <h3>Practice</h3>
+    <p>Practice what you learn with simple questions.</p>
+  </div>
 
-    .hero h1 {
-      font-size: 55px;
-      color: #174f5c;
-      margin-bottom: 20px;
-    }
+  <div class="card">
+    <span>🤖</span>
+    <h3>Ask Wamd</h3>
+    <p>Chat with Wamd AI and ask your English questions anytime.</p>
+  </div>
 
-    .hero p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      background: #d49a45;
-      color: white;
-      padding: 15px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .teacher {
-      background: white;
-      padding: 35px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      width: 280px;
-    }
-
-    .teacher-icon {
-      font-size: 80px;
-      margin-bottom: 15px;
-    }
-
-    .teacher h2 {
-      color: #174f5c;
-      margin-bottom: 8px;
-    }
-
-    .teacher p {
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .sections {
-      padding: 60px 10%;
-      text-align: center;
-    }
-
-    .sections h2 {
-      color: #174f5c;
-      margin-bottom: 35px;
-      font-size: 32px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    }
-
-    .card span {
-      font-size: 40px;
-    }
-
-    .card h3 {
-      margin: 15px 0 10px;
-      color: #174f5c;
-    }
-
-    footer {
-      background: #174f5c;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 750px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-      }
-
-      .hero h1 {
-        font-size: 40px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      nav {
-        display: none;
-      }
-    }
-    #chatbase-bubble-button,
-#chatbase-message-container {
-  display: none !important;
-}
-
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <div class="logo">English Learning</div>
-
-    <nav>
-      <a href="#">Home</a>
-      <a href="#lessons">Lessons</a>
-      <a href="#teacher">WAMD</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-
-    <div class="hero-text">
-      <h1>Learn English.</h1>
-
-      <p>
-        Learn English step by step with simple lessons,
-        useful examples, and your friendly teacher
-        <strong>WAMD</strong>.
-      </p>
-
-    <button class="button" onclick="window.chatbase('open')">Meet WAMD</button>
-
-    
-
-    
-
-  </section>
-
-  <section class="sections" id="lessons">
-
-    <h2>Learn English</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <span>📚</span>
-        <h3>Grammar</h3>
-        <p>Learn simple English grammar with easy explanations.</p>
-      </div>
-
-      <div class="card">
-        <span>📝</span>
-        <h3>Practice</h3>
-        <p>Practice what you learn with simple questions.</p>
-      </div>
-
-      <div class="card">
-        <span>👨🏻‍🏫</span>
-        <h3>Ask Namnam</h3>
-        <p>Chat with Mr. Namnam and ask your English questions.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <footer>
-    © 2026 English Learning — Mr. Namnam
-  </footer>
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="cJp9FNd9k9nqdHpwbBXDk";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-</body>
-</html>
+</div>
