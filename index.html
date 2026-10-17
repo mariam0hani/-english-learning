@@ -1,124 +1,617 @@
-<div class="hero-buttons">
-    <button class="button button-gold" onclick="openTestModal()">
-      🎯 ابدأ اختبار تحديد المستوى
-    </button>
-    <a class="button button-outline" href="#lessons">
-      📚 استكشف الدروس
-    </a>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تعلم الإنجليزية | WAMD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --saudi-green: #006C35;
+      --saudi-green-dark: #004d25;
+      --saudi-green-light: #e6f2ec;
+      --saudi-gold: #D4AF37;
+      --saudi-gold-hover: #b89528;
+      --dark-text: #1d252d;
+      --light-bg: #f7faf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', Arial, sans-serif;
+    }
+
+    body {
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--saudi-green);
+      color: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover { opacity: 0.8; }
+
+    .nav-placement-btn {
+      background: var(--saudi-gold);
+      color: #000 !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700 !important;
+    }
+
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 10%;
+      background: linear-gradient(135deg, var(--saudi-green-light) 0%, #ffffff 100%);
+      gap: 40px;
+    }
+
+    .hero-text { max-width: 600px; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 108, 53, 0.1);
+      color: var(--saudi-green);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: var(--saudi-green);
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #4a5568;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .button-gold {
+      background: var(--saudi-gold);
+      color: #1a1a1a;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .button-gold:hover {
+      background: var(--saudi-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      background: transparent;
+      border: 2px solid var(--saudi-green);
+      color: var(--saudi-green);
+    }
+
+    .button-outline:hover {
+      background: var(--saudi-green);
+      color: white;
+    }
+
+    .button-primary {
+      background: var(--saudi-green);
+      color: white;
+    }
+
+    .button-primary:hover { background: var(--saudi-green-dark); }
+    .full-width { width: 100%; }
+
+    .teacher {
+      background: white;
+      padding: 35px 30px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      width: 320px;
+      border: 2px solid rgba(0, 108, 53, 0.1);
+    }
+
+    .teacher-avatar {
+      font-size: 80px;
+      margin-bottom: 10px;
+    }
+
+    .teacher h2 {
+      color: var(--saudi-green);
+      margin-bottom: 6px;
+    }
+
+    .teacher p {
+      font-size: 15px;
+      color: #718096;
+      margin-bottom: 20px;
+    }
+
+    .sections {
+      padding: 70px 10%;
+      text-align: center;
+    }
+
+    .sections h2 {
+      color: var(--saudi-green);
+      margin-bottom: 40px;
+      font-size: 34px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .highlight-card {
+      border: 2px solid var(--saudi-gold);
+      background: linear-gradient(180deg, #ffffff 0%, #fffdf5 100%);
+    }
+
+    .card-icon { font-size: 45px; margin-bottom: 15px; }
+    .card h3 { margin-bottom: 12px; color: var(--saudi-green); font-size: 22px; }
+    .card p { color: #4a5568; font-size: 15px; margin-bottom: 25px; }
+
+    .card-btn {
+      background: var(--saudi-green);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .gold-btn { background: var(--saudi-gold); color: #000; }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 550px;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px; left: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #a0aec0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #edf2f7;
+      border-radius: 10px;
+      margin: 15px 0 25px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--saudi-gold);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: right;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      border: 1.5px solid #e2e8f0;
+      background: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .option-btn:hover {
+      border-color: var(--saudi-green);
+      background: var(--saudi-green-light);
+    }
+
+    .chat-modal-content {
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 15px;
+      font-size: 15px;
+    }
+
+    .bot-message {
+      background: var(--saudi-green-light);
+      color: var(--saudi-green-dark);
+      align-self: flex-start;
+    }
+
+    .user-message {
+      background: var(--saudi-green);
+      color: white;
+      align-self: flex-end;
+    }
+
+    .chat-input-area {
+      display: flex;
+      gap: 10px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #cbd5e0;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .chat-input-area button {
+      background: var(--saudi-green);
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    footer {
+      background: var(--saudi-green);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; text-align: center; }
+      .teacher { width: 100%; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <span>🌴</span> WAMD
+    </div>
+    <nav>
+      <a href="#">الرئيسية</a>
+      <a href="#lessons">الدروس</a>
+      <a href="#teacher">المعلم WAMD</a>
+      <a href="#" class="nav-placement-btn" onclick="openTestModal(); return false;">🎯 اختبار المستوى</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="badge">✨ منصة التعلم الذكية WAMD</div>
+      <h1>تعلم الإنجليزية بأسلوب حديث وممتع</h1>
+      <p>
+        طوّر مهاراتك في اللغة الإنجليزية خطوة بخطوة مع دروس مبسطة، تمارين تفاعلية، واختبار تحديد مستوى معتمد.
+      </p>
+      
+      <div class="hero-buttons">
+        <button class="button button-gold" onclick="openTestModal()">
+          🎯 ابدأ اختبار تحديد المستوى
+        </button>
+        <a class="button button-outline" href="#lessons">
+          📚 استكشف الدروس
+        </a>
+      </div>
+    </div>
+
+    <div class="teacher" id="teacher">
+      <div class="teacher-avatar">👨🏻‍🏫</div>
+      <h2>المعلم WAMD</h2>
+      <p>مرشدك المباشر لإتقان اللغة الإنجليزية</p>
+      <button class="button button-primary full-width" onclick="openChatModal()">
+        💬 ابدأ المحادثة الآن
+      </button>
+    </div>
+  </section>
+
+  <section class="sections" id="lessons">
+    <h2>مسارات التعلم والتطبيق</h2>
+    <div class="cards">
+      
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>القواعد (Grammar)</h3>
+        <p>تعلم قواعد الإنجليزية الأساسية والمتقدمة بشرح مبسط وأمثلة واقعية.</p>
+        <button class="card-btn" onclick="openTestModal()">ابدأ الدرس ➔</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>التمارين والتطبيقات</h3>
+        <p>اختبر نفسك في الكلمات والتركيبات اللغوية مع تصحيح فوري لإجاباتك.</p>
+        <button class="card-btn" onclick="openTestModal()">ابدأ التمارين ➔</button>
+      </div>
+
+      <div class="card highlight-card">
+        <div class="card-icon">🎯</div>
+        <h3>اختبار تحديد المستوى</h3>
+        <p>اكتشف مستواك الحالي (A1, A2, B1, B2) للحصول على خطة دراسية تناسبك.</p>
+        <button class="card-btn gold-btn" onclick="openTestModal()">ابدأ الاختبار ➔</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 جميع الحقوق محفوظة — منصة WAMD لتعلم الإنجليزية</p>
+  </footer>
+
+  <div class="modal" id="testModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeTestModal()">&times;</span>
+      <div id="testContainer">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h2>🎯 اختبار تحديد المستوى</h2>
+          <p style="color: #718096; font-size: 14px;">أجب على الأسئلة التالية لتحديد مستواك</p>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div id="quizBody"></div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- بطاقة المعلم -->
-<div class="teacher" id="teacher">
-  <div class="teacher-avatar">👨🏻‍🏫</div>
-  <h2>المعلم WAMD</h2>
-  <p>مرشدك المباشر لإتقان اللغة الإنجليزية</p>
-  <button class="button button-primary full-width" onclick="openChatModal()">
-    💬 ابدأ المحادثة الآن
-  </button>
-</div>
-
-  <div class="card">
-    <div class="card-icon">📚</div>
-    <h3>القواعد (Grammar)</h3>
-    <p>تعلم قواعد الإنجليزية الأساسية والمتقدمة لشرح مبسط وأمثلة واقعية.</p>
-    <button class="card-btn" onclick="openQuizModal('grammar')">ابدأ التمرين ➔</button>
+  <div class="modal" id="chatModal">
+    <div class="modal-content chat-modal-content">
+      <span class="close-btn" onclick="closeChatModal()">&times;</span>
+      <div class="chat-header">
+        <span style="font-size: 30px;">👨🏻‍🏫</span>
+        <div>
+          <h3>المعلم WAMD</h3>
+          <small style="color: #38a169;">متصل الآن - جاهز للمساعدة</small>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">أهلاً بك! أنا معلمك WAMD. كيف يمكنني مساعدتك اليوم؟</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="اكتب سؤالك هنا..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">إرسال 🚀</button>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <div class="card-icon">📝</div>
-    <h3>التمارين والتطبيقات</h3>
-    <p>ختبر نفسك في الكلمات والتركيبات اللغوية مع تصحيح فوري لإجاباتك.</p>
-    <button class="card-btn" onclick="openQuizModal('practice')">ابدأ الاختيار ➔</button>
-  </div>
+  <script>
+    const testQuestions = [
+      {
+        q: "Choose the correct sentence:",
+        options: ["She go to school every day.", "She goes to school every day.", "She going to school every day."],
+        correct: 1
+      },
+      {
+        q: "I _____ English for 3 years now.",
+        options: ["have been learning", "am learn", "learnt"],
+        correct: 0
+      },
+      {
+        q: "If I _____ enough time, I would travel more.",
+        options: ["have", "had", "will have"],
+        correct: 1
+      },
+      {
+        q: "Select the antonym of 'Ancient':",
+        options: ["Old", "Modern", "Historic"],
+        correct: 1
+      }
+    ];
 
-  <div class="card highlight-card">
-    <div class="card-icon">🎯</div>
-    <h3>اختبار تحديد المستوى</h3>
-    <p>اكتشف مستواك الحالي (A1, A2, B1, B2) للحصول على خطة دراسية تناسبك.</p>
-    <button class="card-btn gold-btn" onclick="openTestModal()">ابدأ الاختبار ➔</button>
-  </div>
+    let currentQ = 0;
+    let score = 0;
 
-</div>
+    function openTestModal() {
+      currentQ = 0;
+      score = 0;
+      document.getElementById('testModal').style.display = 'flex';
+      loadQuestion();
+    }
 
-:root { --saudi-green: #006C35; --saudi-green-dark: #004d25; --saudi-green-light: #e6f2ec; --saudi-gold: #D4AF37; --saudi-gold-hover: #b89528; --dark-text: #1d252d; --light-bg: #f7faf8; --white: #ffffff; }
-{ box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', Arial, sans-serif; }
-body { background: var(--light-bg); color: var(--dark-text); line-height: 1.6; }
-/* الهيدر */ header { background: var(--saudi-green); color: white; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-.logo { font-size: 26px; font-weight: 800; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-nav { display: flex; align-items: center; gap: 20px; }
-nav a { color: white; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
-nav a:hover { opacity: 0.8; }
-.nav-placement-btn { background: var(--saudi-gold); color: #000 !important; padding: 8px 16px; border-radius: 8px; font-weight: 700 !important; }
-/* قسم Hero */ .hero { min-height: 520px; display: flex; align-items: center; justify-content: space-between; padding: 60px 10%; background: linear-gradient(135deg, var(--saudi-green-light) 0%, #ffffff 100%); gap: 40px; }
-.hero-text { max-width: 600px; }
-.badge { display: inline-block; background: rgba(0, 108, 53, 0.1); color: var(--saudi-green); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 15px; }
-.hero h1 { font-size: 48px; color: var(--saudi-green); margin-bottom: 20px; font-weight: 800; }
-.hero p { font-size: 19px; color: #4a5568; margin-bottom: 30px; }
-.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-/* الأزرار */ .button { display: inline-block; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 16px; cursor: pointer; border: none; transition: all 0.3s ease; }
-.button-gold { background: var(--saudi-gold); color: #1a1a1a; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); }
-.button-gold:hover { background: var(--saudi-gold-hover); transform: translateY(-2px); }
-.button-outline { background: transparent; border: 2px solid var(--saudi-green); color: var(--saudi-green); }
-.button-outline:hover { background: var(--saudi-green); color: white; }
-.button-primary { background: var(--saudi-green); color: white; }
-.button-primary:hover { background: var(--saudi-green-dark); }
-.full-width { width: 100%; }
-/* بطاقة المعلم */ .teacher { background: white; padding: 35px 30px; border-radius: 24px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 320px; border: 2px solid rgba(0, 108, 53, 0.1); }
-.teacher-avatar { font-size: 80px; margin-bottom: 10px; }
-.teacher h2 { color: var(--saudi-green); margin-bottom: 6px; }
-.teacher p { font-size: 15px; color: #718096; margin-bottom: 20px; }
-/* كروت الكورس */ .sections { padding: 70px 10%; text-align: center; }
-.sections h2 { color: var(--saudi-green); margin-bottom: 40px; font-size: 34px; }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.card { background: white; padding: 35px 25px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-.card:hover { transform: translateY(-5px); }
-.highlight-card { border: 2px solid var(--saudi-gold); background: linear-gradient(180deg, #ffffff 0%, #fffdf5 100%); }
-.card-icon { font-size: 45px; margin-bottom: 15px; }
-.card h3 { margin-bottom: 12px; color: var(--saudi-green); font-size: 22px; }
-.card p { color: #4a5568; font-size: 15px; margin-bottom: 25px; }
-.card-btn { background: var(--saudi-green); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; }
-.gold-btn { background: var(--saudi-gold); color: #000; }
-/* النوافذ المنبثقة (Modal) */ .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.
+    function closeTestModal() {
+      document.getElementById('testModal').style.display = 'none';
+    }
 
+    function openChatModal() {
+      document.getElementById('chatModal').style.display = 'flex';
+    }
 
-6); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
-.modal-content { background: white; width: 100%; max-width: 550px; border-radius: 20px; padding: 30px; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-.close-btn { position: absolute; top: 15px; left: 20px; font-size: 28px; cursor: pointer; color: #a0aec0; }
-.progress-bar { width: 100%; height: 8px; background: #edf2f7; border-radius: 10px; margin: 15px 0 25px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--saudi-gold); width: 0%; transition: width 0.3s ease; }
-.option-btn { width: 100%; text-align: right; padding: 14px 18px; margin-bottom: 10px; border: 1.5px solid #e2e8f0; background: white; border-radius: 10px; cursor: pointer; font-size: 16px; transition: all 0.2s; }
-.option-btn:hover { border-color: var(--saudi-green); background: var(--saudi-green-light); }
-/* الشات */ .chat-modal-content { display: flex; flex-direction: column; height: 500px; }
-.chat-header { display: flex; align-items: center; gap: 15px; padding-bottom: 15px; border-bottom: 1px solid #e2e8f0; font-size: 24px; }
-.chat-messages { flex: 1; overflow-y: auto; padding: 15px 0; display: flex; flex-direction: column; gap: 10px; }
-.message { max-width: 80%; padding: 12px 16px; border-radius: 15px; font-size: 15px; }
-.bot-message { background: var(--saudi-green-light); color: var(--saudi-green-dark); align-self: flex-start; border-bottom-right-radius: 2px; }
-.user-message { background: var(--saudi-green); color: white; align-self: flex-end; border-bottom-left-radius: 2px; }
-.chat-input-area { display: flex; gap: 10px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
-.chat-input-area input { flex: 1; padding: 12px; border: 1px solid #cbd5e0; border-radius: 10px; outline: none; }
-.chat-input-area button { background: var(--saudi-green); color: white; border: none; padding: 0 20px; border-radius: 10px; cursor: pointer; font-weight: 700; }
-footer { background: var(--saudi-green); color: white; text-align: center; padding: 25px; margin-top: 40px; }
-@media (max-width: 768px) { .hero { flex-direction: column; text-align: center; } .teacher { width: 100%; } nav { display: none; } }
+    function closeChatModal() {
+      document.getElementById('chatModal').style.display = 'none';
+    }
 
-// أسئلة اختبار تحديد المستوى const testQuestions = [ { q: "Choose the correct sentence:", options: ["She go to school every day.", "She goes to school every day.", "She going to school every day."], correct: 1 }, { q: "I _ English for 3 years now.", options: ["have been learning", "am learn", "learnt"], correct: 0 }, { q: "If I _ enough time, I would travel more.", options: ["have", "had", "will have"], correct: 1 }, { q: "Select the antonym of 'Ancient':", options: ["Old", "Modern", "Historic"], correct: 1 } ];
-let currentQ = 0; let score = 0;
-// فتح وإغلاق النوافذ function openTestModal() { currentQ = 0; score = 0; document.getElementById('testModal').style.display = 'flex'; loadQuestion(); }
-function closeTestModal() { document.getElementById('testModal').style.display = 'none'; }
-function openChatModal() { document.getElementById('chatModal').style.display = 'flex'; }
-function closeChatModal() { document.getElementById('chatModal').style.display = 'none'; }
-// عرض أسئلة الاختبار function loadQuestion() { const qObj = testQuestions[currentQ]; const progress = ((currentQ) / testQuestions.length) * 100; document.getElementById('progressFill').style.width = progress + '%';
-let html = <h3 style="margin-bottom: 15px;">السؤال ${currentQ + 1}: ${qObj.q}</h3>;
-qObj.options.forEach((opt, index) => { html += <button class="option-btn" onclick="selectAnswer(${index})">${opt}</button>; });
-document.getElementById('quizBody').innerHTML = html; }
-function selectAnswer(selectedIndex) { if (selectedIndex === testQuestions[currentQ].correct) { score++; }
-currentQ++; if (currentQ < testQuestions.length) { loadQuestion(); } else { showResult(); } }
-function showResult() { document.getElementById('progressFill').style.width = '100%'; let level = "مبتدئ (A1)"; if (score === 2 || score === 3) level = "متوسط (B1)"; if (score === 4) level = "متقدم (B2/C1)";
-document.getElementById('quizBody').innerHTML = <div style="text-align: center; padding: 20px 0;"> <span style="font-size: 60px;">🎉</span> <h2 style="color: var(--saudi-green); margin: 15px 0;">نتيجة اختبار المستوى</h2> <p style="font-size: 18px;">مستواك المقدر هو: <strong style="color: var(--saudi-gold);">${level}</strong></p> <p style="color: #718096; margin-top: 10px;">إجاباتك الصحيحة: ${score} من ${testQuestions.length}</p> <button class="button button-gold" style="margin-top: 20px;" onclick="closeTestModal()">بدء التعلم الآن</button> </div>; }
-// محاكاة محادثة المعلم WAMD function sendMessage() { const input = document.getElementById('userInput'); const text = input.value.trim(); if (!text) return;
-const chatMessages = document.getElementById('chatMessages');
-// رسالة المستخدم const userMsg = document.createElement('div'); userMsg.className = 'message user-message'; userMsg.innerText = text; chatMessages.appendChild(userMsg);
-input.value = ''; chatMessages.scrollTop = chatMessages.scrollHeight;
-// رد المعلم setTimeout(() => { const botMsg = document.createElement('div'); botMsg.className = 'message bot-message'; botMsg.innerText = "أهلاً بك! " + getBotReply(text); chatMessages.appendChild(botMsg); chatMessages.scrollTop = chatMessages.scrollHeight; }, 700); }
-function getBotReply(msg) { msg = msg.toLowerCase(); if (msg.includes('مرحبا')  msg.includes('هلا')  msg.includes('hi')) return "أهلاً وسهلاً بك في منصة WAMD! كيف أستطيع مساعدتك في لغتك الإنجليزية؟"; if (msg.includes('قواعد')  msg.includes('grammar')) return "يمكنك البدء بدرس الأزمات الأساسية مثل Present Simple من قسم القواعد!"; if (msg.includes('مستوى')  msg.includes('اختبار')) return "أنصحك ببدء اختبار تحديد المستوى من الزر الذهبي بأعلى الصفحة!"; return "سؤال ممتاز! يسعدني إجابتك وتوجيهك لممارستها بطلاقة."; }
-function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
+    function loadQuestion() {
+      const qObj = testQuestions[currentQ];
+      const progress = ((currentQ) / testQuestions.length) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+
+      let html = `<h3 style="margin-bottom: 15px; font-size: 18px;">السؤال ${currentQ + 1}: ${qObj.q}</h3>`;
+      
+      qObj.options.forEach((opt, index) => {
+        html += `<button class="option-btn" onclick="selectAnswer(${index})">${opt}</button>`;
+      });
+
+      document.getElementById('quizBody').innerHTML = html;
+    }
+
+    function selectAnswer(selectedIndex) {
+      if (selectedIndex === testQuestions[currentQ].correct) score++;
+      currentQ++;
+      if (currentQ < testQuestions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('progressFill').style.width = '100%';
+      let level = "مبتدئ (A1)";
+      if (score === 2 || score === 3) level = "متوسط (B1)";
+      if (score === 4) level = "متقدم (B2/C1)";
+
+      document.getElementById('quizBody').innerHTML = `
+        <div style="text-align: center; padding: 10px 0;">
+          <span style="font-size: 50px;">🎉</span>
+          <h2 style="color: var(--saudi-green); margin: 10px 0;">نتيجة الاختبار</h2>
+          <p style="font-size: 18px;">مستواك المقدر: <strong style="color: var(--saudi-gold);">${level}</strong></p>
+          <p style="color: #718096; margin-top: 5px;">الإجابات الصحيحة: ${score} من ${testQuestions.length}</p>
+          <button class="button button-gold" style="margin-top: 15px;" onclick="closeTestModal()">إغلاق</button>
+        </div>
+      `;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatMessages = document.getElementById('chatMessages');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user-message';
+      userMsg.innerText = text;
+      chatMessages.appendChild(userMsg);
+
+      input.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'message bot-message';
+        botMsg.innerText = getBotReply(text);
+        chatMessages.appendChild(botMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 600);
+    }
+
+    function getBotReply(msg) {
+      msg = msg.toLowerCase();
+      if (msg.includes('مرحبا') || msg.includes('هلا') || msg.includes('hi')) return "أهلاً وسهلاً بك في منصة WAMD! كيف أستطيع مساعدتك اليوم؟";
+      if (msg.includes('قواعد') || msg.includes('grammar')) return "يمكنك البدء بدرس الأزمات الأساسية مثل Present Simple!";
+      if (msg.includes('مستوى') || msg.includes('اختبار')) return "أنصحك ببدء اختبار تحديد المستوى من الزر الذهبي بالأعلى!";
+      return "سؤال ممتاز! يسعدني إجابتك وتوجيهك لممارستها بطلاقة.";
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') sendMessage();
+    }
+  </script>
+</body>
+</html>
