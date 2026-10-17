@@ -1,318 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>منصة وَمْض | Wamd AI</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #F5F1E9;
-      color: #8B6F5D;
-    }
-
-    header {
-      background: #0D5C3A;
-      color: white;
-      padding: 20px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 15px;
-      transition: opacity 0.3s;
-    }
-
-    nav a:hover {
-      opacity: 0.8;
-    }
-
-    .hero {
-      min-height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 50px 10%;
-      background: #F5F1E9;
-    }
-
-    .hero-text {
-      max-width: 550px;
-    }
-
-    .hero h1 {
-      font-size: 50px;
-      color: #0D5C3A;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 19px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      color: #8B6F5D;
-    }
-
-    .button {
-      display: inline-block;
-      background: #0D5C3A;
-      color: white;
-      padding: 15px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      box-shadow: 0 4px 12px rgba(13, 92, 58, 0.2);
-      transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .button:hover {
-      background: #094229;
-      transform: translateY(-2px);
-    }
-
-    .teacher {
-      background: white;
-      padding: 35px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      width: 280px;
-    }
-
-    .teacher-icon {
-      font-size: 80px;
-      margin-bottom: 15px;
-    }
-
-    .teacher h2 {
-      color: #0D5C3A;
-      margin-bottom: 8px;
-    }
-
-    .teacher p {
-      font-size: 15px;
-      margin-bottom: 20px;
-      color: #8B6F5D;
-    }
-
-    /* قسم الاختبار التفاعلي */
-    .quiz-section {
-      padding: 40px 10%;
-      background: #EFE8DA;
-      text-align: center;
-      margin: 20px 0;
-      border-top: 2px dashed #0D5C3A;
-      border-bottom: 2px dashed #0D5C3A;
-    }
-
-    .quiz-container {
-      background: white;
-      max-width: 650px;
-      margin: 25px auto 0;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-      text-align: left;
-    }
-
-    .quiz-question {
-      font-size: 18px;
-      font-weight: bold;
-      color: #0D5C3A;
-      margin-bottom: 12px;
-    }
-
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .quiz-options label {
-      background: #F5F1E9;
-      padding: 12px 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      color: #8B6F5D;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .quiz-options label:hover {
-      background: #E8DFC8;
-    }
-
-    .result-msg {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 15px;
-      text-align: center;
-    }
-
-    .sections {
-      padding: 60px 10%;
-      text-align: center;
-    }
-
-    .sections h2 {
-      color: #0D5C3A;
-      margin-bottom: 35px;
-      font-size: 32px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    }
-
-    .card span {
-      font-size: 40px;
-    }
-
-    .card h3 {
-      margin: 15px 0 10px;
-      color: #0D5C3A;
-    }
-
-    .card p {
-      color: #8B6F5D;
-    }
-
-    footer {
-      background: #0D5C3A;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
-}
-
-    @media (max-width: 750px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-      }
-
-      .hero h1 {
-        font-size: 38px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      nav {
-        display: none;
-      }
-    }
-
-    #chatbase-bubble-button,
-    #chatbase-message-container {
-      display: none !important;
-    }
-  </style>
-</head>
-
-<nav>
-  <a href="#">Home</a>
-  <a href="#quiz">Quiz</a>
-  <a href="#lessons">Lessons</a>
-  <a href="#teacher">Wamd AI</a>
-</nav>
-<div class="hero-text">
-  <h1>Learn English.</h1>
-
-  <p>
-    Learn English step by step with simple lessons,
-    useful examples, and your friendly AI teacher
-    <strong>Wamd AI</strong>.
-  </p>
-
-  <button class="button" onclick="window.chatbase('open')">Meet Wamd AI</button>
-</div>
-
 <div class="teacher" id="teacher">
   <div class="teacher-icon">👨🏻‍🏫</div>
   <h2>Wamd AI</h2>
   <p>Your friendly English teacher</p>
   <button class="button" onclick="window.chatbase('open')">Start Chat</button>
 </div>
-<div class="quiz-container">
-  <div class="quiz-question">1. She _______ to school every day.</div>
-  <div class="quiz-options">
-    <label><input type="radio" name="q1" value="go"> a) go</label>
-    <label><input type="radio" name="q1" value="goes"> b) goes</label>
-    <label><input type="radio" name="q1" value="going"> c) going</label>
+<div class="test-box">
+  <div class="test-q">1. Choose the correct sentence:</div>
+  <div class="test-opts">
+    <label><input type="radio" name="t1" value="wrong"> a) She play tennis every weekend.</label>
+    <label><input type="radio" name="t1" value="correct"> b) She plays tennis every weekend.</label>
+    <label><input type="radio" name="t1" value="wrong"> c) She playing tennis every weekend.</label>
   </div>
 
-  <div class="quiz-question">2. Theyng>.
-  </playing football right now.</div>
-  <div class="quiz-options">
-    <label><input type="radio" name="q2" value="is"> a) is</label>
-    <label><input type="radio" name="q2" value="are"> b) are</label>
-    <label><input type="radio" name="q2" value="am"> c) am</label>
+  <div style="text-align: center; margin-top: 15px;">
+    <button class="button" onclick="checkLevel()">Show My Level</button>
   </div>
 
-  <div style="text-align: center; margin-top: 20px;">
-    <button class="button" onclick="checkQuiz()">Submit Answers</button>
-  </div>
-
-  <div id="quiz-result" class="result-msg"></div>
+  <div id="level-result" class="level-result"></div>
 </div>
-<h2>Learn English with Wamd AI</h2>
+/* تنسيق اختبار تحديد المستوى */
+.test-section { padding: 40px 10%; background: #EFE8DA; text-align: center; border-top: 2px dashed #0D5C3A; border-bottom: 2px dashed #0D5C3A; }
+.test-box { background: white; max-width: 650px; margin: 20px auto 0; padding: 30px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); text-align: left; }
+.test-q { font-size: 18px; font-weight: bold; color: #0D5C3A; margin-bottom: 10px; }
+.test-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.test-opts label { background: #F5F1E9; padding: 10px 15px; border-radius: 8px; cursor: pointer; color: #8B6F5D; display: flex; align-items: center; gap: 10px; }
+.level-result { font-size: 18px; font-weight: bold; margin-top: 15px; text-align: center; }
 
-<div class="cards">
-
-  <div class="card">
-    <span>📚</span>
-    <h3>Grammar</h3>
-    <p>Learn simple English grammar with easy explanations.</p>
-  </div>
-
-  <div class="card">
-    <span>📝</span>
-    <h3>Practice</h3>
-    <p>Practice what you learn with simple questions.</p>
-  </div>
-
-  <div class="card">
-    <span>🤖</span>
-    <h3>Ask Wamd</h3>
-    <p>Chat with Wamd AI and ask your English questions anytime.</p>
-  </div>
-
-</div>
+.sections { padding: 60px 10%; text-align: center; }
+.sections h2 { color: #0D5C3A; margin-bottom: 35px; font-size: 32px; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.card { background: white; padding: 30px; border-radius: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
+.card span { font-size: 40px; }
+.card h3 { margin: 15px 0 10px; color: #0D5C3A; }
+.card p { color: #8B6F5D; }
+footer { background: #0D5C3A; color: white; text-align: center; padding: 25px; margin-top: 30px; }
+#chatbase-bubble-button, #chatbase-message-container { display: none !important; }
