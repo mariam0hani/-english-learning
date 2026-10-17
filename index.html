@@ -46,3 +46,75 @@
   </div>
 
 </div>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#quiz">Quiz</a>
+  <a href="#lessons">Lessons</a>
+  <a href="#teacher">Wamd AI</a>
+</nav>
+
+<div class="hero-text">
+  <h1>Learn English.</h1>
+
+  <p>
+    Learn English step by step with simple lessons,
+    useful examples, and your friendly AI teacher
+    <strong>Wamd AI</strong>.
+  </p>
+
+  <button class="button" onclick="window.chatbase('open')">Meet Wamd AI</button>
+</div>
+
+<div class="teacher" id="teacher">
+  <div class="teacher-icon">👨🏻‍🏫</div>
+  <h2>Wamd AI</h2>
+  <p>Your friendly English teacher</p>
+  <button class="button" onclick="window.chatbase('open')">Start Chat</button>
+</div>
+
+<div class="quiz-container">
+  <div class="quiz-question">1. She _______ to school every day.</div>
+  <div class="quiz-options">
+    <label><input type="radio" name="q1" value="go"> a) go</label>
+    <label><input type="radio" name="q1" value="goes"> b) goes</label>
+    <label><input type="radio" name="q1" value="going"> c) going</label>
+  </div>
+
+  <div class="quiz-question">2. They
+playing football right now.</div>
+  <div class="quiz-options">
+    <label><input type="radio" name="q2" value="is"> a) is</label>
+    <label><input type="radio" name="q2" value="are"> b) are</label>
+    <label><input type="radio" name="q2" value="am"> c) am</label>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <button class="button" onclick="checkQuiz()">Submit Answers</button>
+  </div>
+
+  <div id="quiz-result" class="result-msg"></div>
+</div>
+<h2>Learn English with Wamd AI</h2>
+
+<div class="cards">
+
+  <div class="card">
+    <span>📚</span>
+    <h3>Grammar</h3>
+    <p>Learn simple English grammar with easy explanations.</p>
+  </div>
+
+  <div class="card">
+    <span>📝</span>
+    <h3>Practice</h3>
+    <p>Practice what you learn with simple questions.</p>
+  </div>
+
+  <div class="card">
+    <span>🤖</span>
+    <h3>Ask Wamd</h3>
+    <p>Chat with Wamd AI and ask your English questions anytime.</p>
+  </div>
+
+</div>
