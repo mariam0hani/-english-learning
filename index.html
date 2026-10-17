@@ -1,136 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة وَمْض | Wamd AI</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: sans-serif; background: #F5F1E9; color: #8B6F5D; }
-    header { background: #0D5C3A; color: white; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 22px; font-weight: bold; }
-    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 40px 8%; gap: 20px; }
-    .hero-text { max-width: 500px; }
-    .hero h1 { font-size: 40px; color: #0D5C3A; margin-bottom: 15px; }
-    .button { background: #0D5C3A; color: white; padding: 12px 24px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; }
-    .teacher { background: white; padding: 25px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); width: 260px; margin: 0 auto; }
-    .teacher-icon { font-size: 60px; }
-    .test-section { padding: 30px 8%; background: #EFE8DA; text-align: center; margin: 20px 0; border-radius: 15px; }
-    .test-box { background: white; max-width: 550px; margin: 15px auto; padding: 25px; border-radius: 15px; text-align: left; }
-    .test-opts label { background: #F5F1E9; padding: 10px 14px; border-radius: 6px; display: block; margin: 8px 0; cursor: pointer; }
-    .q-title { color: #0D5C3A; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 40px 8%; text-align: center; }
-    .card { background: white; padding: 20px; border-radius: 15px; }
-    footer { background: #0D5C3A; color: white; text-align: center; padding: 20px; }
-    #chatbase-bubble-button, #chatbase-message-container { display: none !important; }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wamd AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#f8fafc;color:#1e293b;line-height:1.6}
+header{display:flex;justify-content:space-between;align-items:center;padding:1rem 5%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,0.05);position:sticky;top:0;z-index:100}
+.logo{font-size:1.4rem;font-weight:700;color:#4f46e5}
+nav a{margin-left:15px;text-decoration:none;color:#475569;font-weight:600}
+.hero{text-align:center;padding:3rem 1rem;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border-radius:0 0 30px 30px}
+.hero h1{font-size:2.3rem;margin-bottom:0.5rem}
+.hero p{max-width:500px;margin:1rem auto;opacity:0.9}
+.cta-btn{display:inline-block;background:#fff;color:#4f46e5;padding:0.7rem 1.5rem;border-radius:20px;font-weight:bold;text-decoration:none;margin-top:1rem}
+.features{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;padding:3rem 5%}
+.card{background:#fff;padding:1.5rem;border-radius:12px;width:280px;text-align:center;border:1px solid #e2e8f0}
+.quiz{max-width:650px;margin:1rem auto;background:#fff;padding:2rem;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.05)}
+.quiz h2{color:#4f46e5;margin-bottom:1rem;text-align:center}
+.q{margin-bottom:1.2rem;font-weight:600}
+.opts button{display:block;width:100%;padding:0.6rem;margin-top:5px;border:1px solid #cbd5e1;background:#f8fafc;border-radius:6px;cursor:pointer;text-align:left}
+footer{text-align:center;padding:1.5rem;background:#0f172a;color:#94a3b8;margin-top:3rem}
+</style>
 </head>
-<!-- Wamd AI Introduction -->
-<section class="wamd-intro" dir="ltr">
-  <div class="wamd-icon">📚</div>
+<body>
+<header>
+<div class="logo">📚 Wamd AI</div>
+<nav><a href="#about">About</a><a href="#quiz">Test</a></nav>
+</header>
 
-  <p class="wamd-welcome">WELCOME TO</p>
-
-  <h2>Wamd AI</h2>
-
-  <h3>Your English Learning Journey Starts Here!</h3>
-
-  <p class="wamd-description">
-    Wamd AI is your smart English learning companion.
-    Chat with your AI teacher, understand English grammar,
-    and discover your language level through an interactive test.
-  </p>
-
-  <div class="wamd-features">
-    <div>💬 <span>AI English Teacher</span></div>
-    <div>📖 <span>Easy Grammar Learning</span></div>
-    <div>🎯 <span>Level Assessment</span></div>
-  </div>
-
-  <p class="wamd-footer">
-    Learn at your own pace. Improve every day!
-  </p>
+<section class="hero" id="about">
+<h1>Wamd AI</h1>
+<p>Your smart English learning companion. Practice with AI and improve daily.</p>
+<a href="#quiz" class="cta-btn">Start Test 🎯</a>
 </section>
 
-<div class="teacher">
-  <div class="teacher-icon">👨🏻‍🏫</div>
-  <h2 style="color:#0D5C3A;">Wamd AI</h2>
-  <p>Your friendly English teacher</p>
-  <button class="button" onclick="window.chatbase('open')">Start Chat</button>
-</div>
-<div class="test-box" style="text-align: center;">
-  <!-- الزر المبدئي للبدء -->
-  <button id="start-btn" class="button" onclick="startQuiz()" style="font-size: 18px; padding: 15px 30px;">
-    🚀 Start Level Test
-  </button>
+<section class="features">
+<div class="card"><h3>💬 AI Teacher</h3><p>Practice anytime with your tutor.</p></div>
+<div class="card"><h3>📖 Easy Grammar</h3><p>Learn rules simply.</p></div>
+<div class="card"><h3>🎯 Level Test</h3><p>Evaluate your skills instantly.</p></div>
+</section>
 
-  <!-- الأسئلة مخفية وتظهر عند الضغط على الزر -->
-  <div id="quiz-content" style="display: none; text-align: left;">
-    
-    <p class="q-title">1. She _______ to school every day.</p>
-    <div class="test-opts">
-      <label><input type="radio" name="q1" value="wrong"> a) go</label>
-      <label><input type="radio" name="q1" value="correct"> b) goes</label>
-      <label><input type="radio" name="q1" value="wrong"> c) going</label>
-    </div>
+<section class="quiz" id="quiz">
+<h2>Quick Level Assessment</h2>
+<div class="q">1. She ___ to school every day.</div>
+<div class="opts"><button>A) go</button><button>B) goes</button><button>C) going</button></div>
 
-    <p class="q-title">2. Theyton id="splaying football right now.</p>
-    <div class="test-opts">
-      <label><input type="radio" name="q2" value="wrong"> a) is</label>
-      <label><input type="radio" name="q2" value="correct"> b) are</label>
-      <label><input type="radio" name="q2" value="wrong"> c) am</label>
-    </div>
+<div class="q" style="margin-top:1.5rem;">2. They ___ playing football right now.</div>
+<div class="opts"><button>A) is</button><button>B) am</button><button>C) are</button></div>
 
-    <p class="q-title">3. If I have enough money, I="button"buy a new car.</p>
-    <div class="test-opts">
-      <label><input type="radio" name="q3" value="correct"> a) will</label>
-      <label><input type="radio" name="q3" value="wrong"> b) would</label>
-      <label><input type="radio" name="q3" value="wrong"> c) visited</label>
-    </div>
-
-    <div style="text-align: center; margin-top: 20px;">
-      <button class="button" onclick="calculateLevel()">Show My Level</button>
-    </div>
-
-    <div id="res" style="margin-top: 20px; font-weight: bold; text-align: center; font-size: 18px;"></div>
-  </div>
-</div>
-<script>
-function startQuiz() {
-  document.getElementById('start-btn').style.display = 'none';
-  document.getElementById('quiz-content').style.display = 'block';
-}
-
-function calculateLevel() {
-  const q1 = document.querySelector('input[name="q1"]:checked');
-  const q2 = document.querySelector('input[name="q2"]:checked');
-  const q3 = document.querySelector('input[name="q3"]:checked');
-  const res = document.getElementById('res');
-
-  if (!q1  !q2  !q3) {
-    res.style.color = "red";
-    res.textContent = "Please answer all questions first!";
-    return;
-  }
-
-  let score = 0;
-  if (q1.value === "correct") score++;
-  if (q2.value === "correct") score++;
-  if (q3.value === "correct") score++;
-
-  if (score === 3) {
-    res.style.color = "#0D5C3A";
-    res.innerHTML = "🏆 Your Level: <strong>B1 / B2 (Intermediate / Advanced)</strong><br><span style='font-size:14px; font-weight:normal;'>Great job! You have a solid grasp of English grammar.</span>";
-  } else if (score === 2) {
-    res.style.color = "#0D5C3A";
-    res.innerHTML = "🌟 Your Level: <strong>A2 (Elementary)</strong><br><span style='font-size:14px; font-weight:normal;'>Good effort! Practice with Wamd AI to reach B1 level.</span>";
-  } else {
-    res.style.color = "#8B6F5D";
-    res.innerHTML = "💡 Your Level: <strong>A1 (Beginner)</strong><br><span style='font-size:14px; font-weight:normal;'>Keep learning! Ask Wamd AI to help you learn step-by-step.</span>";
-  }
-}
-
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="cJp9FNd9k9nqdHpwbBXDk";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
+<div class="q" style="margin-top:1.5rem;">3. If I have enough money, I ___ buy a car.</div>
+<div class="opts"><button>A) will</button><button>B) would</button><button>C) had</button></div>
+</section>
+<footer>
+<p>© 2026 Wamd AI. Designed by Mariam.</p>
+</footer>
 </body>
 </html>
