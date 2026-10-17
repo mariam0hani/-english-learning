@@ -16,53 +16,94 @@
     .teacher { background: white; padding: 25px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); width: 260px; margin: 0 auto; }
     .teacher-icon { font-size: 60px; }
     .test-section { padding: 30px 8%; background: #EFE8DA; text-align: center; margin: 20px 0; border-radius: 15px; }
-    .test-box { background: white; max-width: 500px; margin: 15px auto; padding: 20px; border-radius: 15px; text-align: left; }
-    .test-opts label { background: #F5F1E9; padding: 8px 12px; border-radius: 6px; display: block; margin: 8px 0; cursor: pointer; }
+    .test-box { background: white; max-width: 550px; margin: 15px auto; padding: 25px; border-radius: 15px; text-align: left; }
+    .test-opts label { background: #F5F1E9; padding: 10px 14px; border-radius: 6px; display: block; margin: 8px 0; cursor: pointer; }
+    .q-title { color: #0D5C3A; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 40px 8%; text-align: center; }
     .card { background: white; padding: 20px; border-radius: 15px; }
     footer { background: #0D5C3A; color: white; text-align: center; padding: 20px; }
     #chatbase-bubble-button, #chatbase-message-container { display: none !important; }
   </style>
 </head>
-
 <div class="teacher">
   <div class="teacher-icon">👨🏻‍🏫</div>
   <h2 style="color:#0D5C3A;">Wamd AI</h2>
   <p>Your friendly English teacher</p>
   <button class="button" onclick="window.chatbase('open')">Start Chat</button>
 </div>
+<div class="test-box" style="text-align: center;">
+  <!-- الزر المبدئي للبدء -->
+  <button id="start-btn" class="button" onclick="startQuiz()" style="font-size: 18px; padding: 15px 30px;">
+    🚀 Start Level Test
+  </button>
 
-<section class="test-section">
-    <h2 style="color: #0D5C3A;">🎯 English Level Test</h2>
-    <div class="test-box">
-      <p><strong>1. She ___ to school every day.</strong></p>
-      <div class="test-opts">
-        <label><input type="radio" name="t1" value="wrong"> a) go</label>
-        <label><input type="radio" name="t1" value="correct"> b) goes</label>
-        <label><input type="radio" name="t1" value="wrong"> c) going</label>
-      </div>
-      <button class="button" onclick="checkLevel()">Show My Level</button>
-      <p id="res" style="margin-top:10px; font-weight:bold;"></p>
+  <!-- الأسئلة مخفية وتظهر عند الضغط على الزر -->
+  <div id="quiz-content" style="display: none; text-align: left;">
+    
+    <p class="q-title">1. She _______ to school every day.</p>
+    <div class="test-opts">
+      <label><input type="radio" name="q1" value="wrong"> a) go</label>
+      <label><input type="radio" name="q1" value="correct"> b) goes</label>
+      <label><input type="radio" name="q1" value="wrong"> c) going</label>
     </div>
-  </section>
 
-  <section class="cards">
-    <div class="card"><span>📚</span><h3 style="color:#0D5C3A;">Grammar</h3><p>Simple explanations.</p></div>
-    <div class="card"><span>📝</span><h3 style="color:#0D5C3A;">Practice</h3><p>Simple questions.</p></div>
-    <div class="card"><span>🤖</span><h3 style="color:#0D5C3A;">Ask Wamd</h3><p>Chat anytime.</p></div>
-  </section>
+    <p class="q-title">2. Theyton id="splaying football right now.</p>
+    <div class="test-opts">
+      <label><input type="radio" name="q2" value="wrong"> a) is</label>
+      <label><input type="radio" name="q2" value="correct"> b) are</label>
+      <label><input type="radio" name="q2" value="wrong"> c) am</label>
+    </div>
 
-  <footer>© 2026 وَمْض | Wamd AI</footer>
+    <p class="q-title">3. If I have enough money, I="button"buy a new car.</p>
+    <div class="test-opts">
+      <label><input type="radio" name="q3" value="correct"> a) will</label>
+      <label><input type="radio" name="q3" value="wrong"> b) would</label>
+      <label><input type="radio" name="q3" value="wrong"> c) visited</label>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button class="button" onclick="calculateLevel()">Show My Level</button>
+    </div>
+
+    <div id="res" style="margin-top: 20px; font-weight: bold; text-align: center; font-size: 18px;"></div>
+  </div>
+</div>
 <script>
-function checkLevel() {
-  const ans = document.querySelector('input[name="t1"]:checked');
-  const res = document.getElementById('res');
-  if(!ans) { res.style.color="red"; res.textContent="Please select an answer!"; return; }
-  if(ans.value === "correct") { res.style.color="#0D5C3A"; res.textContent="🎉 Intermediate Level!"; }
-  else { res.style.color="#8B6F5D"; res.textContent="💡 Beginner Level. Ask Wamd AI!"; }
+function startQuiz() {
+  document.getElementById('start-btn').style.display = 'none';
+  document.getElementById('quiz-content').style.display = 'block';
 }
 
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="cJp9FNd9k9nqdHpwbBXDk";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener="load",onLoad)}})();
+function calculateLevel() {
+  const q1 = document.querySelector('input[name="q1"]:checked');
+  const q2 = document.querySelector('input[name="q2"]:checked');
+  const q3 = document.querySelector('input[name="q3"]:checked');
+  const res = document.getElementById('res');
+
+  if (!q1  !q2  !q3) {
+    res.style.color = "red";
+    res.textContent = "Please answer all questions first!";
+    return;
+  }
+
+  let score = 0;
+  if (q1.value === "correct") score++;
+  if (q2.value === "correct") score++;
+  if (q3.value === "correct") score++;
+
+  if (score === 3) {
+    res.style.color = "#0D5C3A";
+    res.innerHTML = "🏆 Your Level: <strong>B1 / B2 (Intermediate / Advanced)</strong><br><span style='font-size:14px; font-weight:normal;'>Great job! You have a solid grasp of English grammar.</span>";
+  } else if (score === 2) {
+    res.style.color = "#0D5C3A";
+    res.innerHTML = "🌟 Your Level: <strong>A2 (Elementary)</strong><br><span style='font-size:14px; font-weight:normal;'>Good effort! Practice with Wamd AI to reach B1 level.</span>";
+  } else {
+    res.style.color = "#8B6F5D";
+    res.innerHTML = "💡 Your Level: <strong>A1 (Beginner)</strong><br><span style='font-size:14px; font-weight:normal;'>Keep learning! Ask Wamd AI to help you learn step-by-step.</span>";
+  }
+}
+
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="cJp9FNd9k9nqdHpwbBXDk";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 </body>
 </html>
