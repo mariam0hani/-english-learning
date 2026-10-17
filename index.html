@@ -1,37 +1,129 @@
-<div class="teacher" id="teacher">
-  <div class="teacher-icon">👨🏻‍🏫</div>
-  <h2>Wamd AI</h2>
-  <p>Your friendly English teacher</p>
-  <button class="button" onclick="window.chatbase('open')">Start Chat</button>
-</div>
-<div class="test-box">
-  <div class="test-q">1. Choose the correct sentence:</div>
-  <div class="test-opts">
-    <label><input type="radio" name="t1" value="wrong"> a) She play tennis every weekend.</label>
-    <label><input type="radio" name="t1" value="correct"> b) She plays tennis every weekend.</label>
-    <label><input type="radio" name="t1" value="wrong"> c) She playing tennis every weekend.</label>
+<div class="max-w-xl text-center md:text-left">
+    <span class="inline-block bg-earthyBrown/10 text-earthyBrown text-xs px-3 py-1 rounded-full font-semibold mb-4 tracking-wide">
+      🇸🇦 Powered by Saudi Innovation
+    </span>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-saudiGreen leading-tight mb-6">
+      Learn English.
+    </h1>
+    <p class="text-base sm:text-lg text-earthyBrown leading-relaxed mb-8">
+      Learn English step by step with simple lessons, useful examples, and your friendly AI teacher <strong class="text-saudiGreen">Wamd AI</strong>.
+    </p>
+    <button onclick="openChat()" class="bg-saudiGreen hover:bg-saudiGreenDark text-white px-8 py-4 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition active:scale-95 flex items-center justify-center gap-2 mx-auto md:mx-0">
+      <span>Start Chat with Wamd AI</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
   </div>
 
-  <div style="text-align: center; margin-top: 15px;">
-    <button class="button" onclick="checkLevel()">Show My Level</button>
+  <!-- TEACHER CARD -->
+  <div id="teacher" class="bg-white p-8 sm:p-10 rounded-3xl shadow-xl text-center border border-saudiGreen/10 w-full max-w-xs transform hover:scale-105 transition duration-300">
+    <div class="text-7xl mb-4 select-none">👨🏻‍🏫</div>
+    <h2 class="text-2xl font-bold text-saudiGreen mb-1">Wamd AI</h2>
+    <p class="text-sm text-earthyBrown mb-6 font-medium">Your friendly English teacher</p>
+    <button onclick="openChat()" class="w-full bg-saudiGreen hover:bg-saudiGreenDark text-white py-3 rounded-xl font-bold text-sm shadow transition active:scale-95">
+      Start Chat
+    </button>
   </div>
 
-  <div id="level-result" class="level-result"></div>
-</div>
-/* تنسيق اختبار تحديد المستوى */
-.test-section { padding: 40px 10%; background: #EFE8DA; text-align: center; border-top: 2px dashed #0D5C3A; border-bottom: 2px dashed #0D5C3A; }
-.test-box { background: white; max-width: 650px; margin: 20px auto 0; padding: 30px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); text-align: left; }
-.test-q { font-size: 18px; font-weight: bold; color: #0D5C3A; margin-bottom: 10px; }
-.test-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-.test-opts label { background: #F5F1E9; padding: 10px 15px; border-radius: 8px; cursor: pointer; color: #8B6F5D; display: flex; align-items: center; gap: 10px; }
-.level-result { font-size: 18px; font-weight: bold; margin-top: 15px; text-align: center; }
+</section>
 
-.sections { padding: 60px 10%; text-align: center; }
-.sections h2 { color: #0D5C3A; margin-bottom: 35px; font-size: 32px; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-.card { background: white; padding: 30px; border-radius: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
-.card span { font-size: 40px; }
-.card h3 { margin: 15px 0 10px; color: #0D5C3A; }
-.card p { color: #8B6F5D; }
-footer { background: #0D5C3A; color: white; text-align: center; padding: 25px; margin-top: 30px; }
-#chatbase-bubble-button, #chatbase-message-container { display: none !important; }
+<!-- ================= LEVEL TEST SECTION ================= -->
+<section id="leveltest" class="bg-sandyBeigeDark py-14 px-6 sm:px-12 border-y-2 border-dashed border-saudiGreen/20">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-saudiGreen mb-2">
+      🎯 English Level Test
+    </h2>
+    <p class="text-sm sm:text-base text-earthyBrown mb-8">
+      Take this quick test to check your English level!
+    </p>
+
+    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-md text-left space-y-6">
+      
+      <!-- Question 1 -->
+      <div>
+        <p class="font-bold text-saudiGreen text-base mb-3">1. She _______ to school every day.</p>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 bg-sandyBeige p-3 rounded-xl cursor-pointer hover:bg-sandyBeigeDark transition">
+            <input type="radio" name="q1" value="wrong" class="accent-saudiGreen w-4 h-4">
+            <span class="text-sm font-medium">a) go</span>
+          </label>
+          <label class="flex items-center gap-3 bg-sandyBeige p-3 rounded-xl cursor-pointer hover:bg-sandyBeigeDark transition">
+            <input type="radio" name="q1" value="correct" class="accent-saudiGreen w-4 h-4">
+            <span class="text-sm font-medium">b) goes</span>
+          </label>
+          <label class="flex items-center gap-3 bg-sandyBeige p-3 rounded-xl cursor-pointer hover:bg-sandyBeigeDark transition">
+            <input type="radio" name="q1" value="wrong" class="accent-saudiGreen w-4 h-4">
+            <span class="text-sm font-medium">c) going</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div>
+        <p class="font-bold text-saudiGreen text-base mb-3">2. They 010 1.41playing football right now.</p>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 bg-sandyBeige p-3 rounded-xl cursor-pointer hover:bg-sandyBeigeDark transition">
+            <input type="radio" name="q2" value="wrong" class="accent-saudiGreen w-4 h-4">
+            <span class="text-sm font-medium">a) is</span>
+          </label>
+
+<label class="flex items-center gap-3 bg-sandyBeige p-3 rounded-xl cursor-pointer hover:bg-sandyBeigeDark transition">
+            <input type="radio" name="q2" value="correct" class="accent-saudiGreen w-4 h-4">
+            <span class="text-sm font-medium">b) are</span>
+          </label>
+          <label class="flex items-center gap-3 bg-sandyBeige p-3 rounded-xl cursor-pointer hover:bg-sandyBeigeDark transition">
+            <input type="radio" name="q2" value="wrong" class="accent-saudiGreen w-4 h-4">
+            <span class="text-sm font-medium">c) am</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="text-center pt-2">
+        <button onclick="checkLevel()" class="bg-saudiGreen hover:bg-saudiGreenDark text-white px-8 py-3 rounded-xl font-bold text-sm shadow transition active:scale-95">
+          Show My Level
+        </button>
+      </div>
+
+      <!-- Result Display -->
+      <div id="level-result" class="text-center font-bold text-base min-h-[28px] transition-all"></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES / LESSONS ================= -->
+<section id="lessons" class="py-16 px-6 sm:px-12 max-w-7xl mx-auto text-center">
+  <h2 class="text-2xl sm:text-3xl font-extrabold text-saudiGreen mb-10">
+    Learn English with Wamd AI
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-black/5 hover:shadow-md transition">
+      <div class="text-5xl mb-4">📚</div>
+      <h3 class="text-xl font-bold text-saudiGreen mb-2">Grammar</h3>
+      <p class="text-sm text-earthyBrown leading-relaxed">
+        Learn simple English grammar with easy explanations.
+      </p>
+    </div>
+
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-black/5 hover:shadow-md transition">
+      <div class="text-5xl mb-4">📝</div>
+      <h3 class="text-xl font-bold text-saudiGreen mb-2">Practice</h3>
+      <p class="text-sm text-earthyBrown leading-relaxed">
+        Practice what you learn with simple questions.
+      </p>
+    </div>
+
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-black/5 hover:shadow-md transition">
+      <div class="text-5xl mb-4">🤖</div>
+      <h3 class="text-xl font-bold text-saudiGreen mb-2">Ask Wamd</h3>
+      <p class="text-sm text-earthyBrown leading-relaxed">
+        Chat with Wamd AI and ask your English questions anytime.
+      </p>
+    </div>
+
+  </div>
+</section>
