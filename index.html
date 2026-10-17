@@ -210,7 +210,7 @@
       transition: transform 0.3s;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
 
     .card:hover { transform: translateY(-5px); }
@@ -222,20 +222,7 @@
 
     .card-icon { font-size: 45px; margin-bottom: 15px; }
     .card h3 { margin-bottom: 12px; color: var(--saudi-green); font-size: 22px; }
-    .card p { color: #4a5568; font-size: 15px; margin-bottom: 25px; }
-
-    .card-btn {
-      background: var(--saudi-green);
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .gold-btn { background: var(--saudi-gold); color: #000; }
+    .card p { color: #4a5568; font-size: 15px; }
 
     .modal {
       display: none;
@@ -433,21 +420,18 @@
         <div class="card-icon">📚</div>
         <h3>القواعد (Grammar)</h3>
         <p>تعلم قواعد الإنجليزية الأساسية والمتقدمة بشرح مبسط وأمثلة واقعية.</p>
-        <button class="card-btn" onclick="openTestModal()">ابدأ الدرس ➔</button>
       </div>
 
       <div class="card">
         <div class="card-icon">📝</div>
         <h3>التمارين والتطبيقات</h3>
         <p>اختبر نفسك في الكلمات والتركيبات اللغوية مع تصحيح فوري لإجاباتك.</p>
-        <button class="card-btn" onclick="openTestModal()">ابدأ التمارين ➔</button>
       </div>
 
       <div class="card highlight-card">
         <div class="card-icon">🎯</div>
         <h3>اختبار تحديد المستوى</h3>
-        <p>اكتشف مستواك الحالي (A1, A2, B1, B2) للحصول على خطة دراسية تناسبك.</p>
-        <button class="card-btn gold-btn" onclick="openTestModal()">ابدأ الاختبار ➔</button>
+        <p>اكتشف مستواك الحالي (A1, A2, B1, B2, C1) للحصول على خطة دراسية تناسبك.</p>
       </div>
 
     </div>
@@ -463,7 +447,7 @@
       <div id="testContainer">
         <div style="text-align: center; margin-bottom: 20px;">
           <h2>🎯 اختبار تحديد المستوى</h2>
-          <p style="color: #718096; font-size: 14px;">أجب على الأسئلة التالية لتحديد مستواك</p>
+          <p style="color: #718096; font-size: 14px;">أجب على الأسئلة التالية لتحديد مستواك (10 أسئلة)</p>
           <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
         </div>
         <div id="quizBody"></div>
@@ -494,24 +478,54 @@
   <script>
     const testQuestions = [
       {
-        q: "Choose the correct sentence:",
-        options: ["She go to school every day.", "She goes to school every day.", "She going to school every day."],
+        q: "She _____ to school every day.",
+        options: ["go", "goes", "going", "gone"],
         correct: 1
+      },
+      {
+        q: "Where _____ you yesterday?",
+        options: ["was", "are", "were", "been"],
+        correct: 2
       },
       {
         q: "I _____ English for 3 years now.",
-        options: ["have been learning", "am learn", "learnt"],
+        options: ["have been learning", "am learn", "learnt", "learning"],
         correct: 0
       },
       {
-        q: "If I _____ enough time, I would travel more.",
-        options: ["have", "had", "will have"],
+        q: "Look! The children _____ in the garden.",
+        options: ["play", "are playing", "played", "plays"],
         correct: 1
       },
       {
-        q: "Select the antonym of 'Ancient':",
-        options: ["Old", "Modern", "Historic"],
+        q: "If I _____ enough money, I would travel around the world.",
+        options: ["have", "had", "will have", "would have"],
         correct: 1
+      },
+      {
+        q: "The book _____ was written by Shakespeare is very famous.",
+        options: ["who", "which", "where", "whose"],
+        correct: 1
+      },
+      {
+        q: "Select the opposite (antonym) of 'Ancient':",
+        options: ["Old", "Historic", "Modern", "Traditional"],
+        correct: 2
+      },
+      {
+        q: "By the time we arrived, the movie _____ already started.",
+        options: ["has", "had", "was", "is"],
+        correct: 1
+      },
+      {
+        q: "Neither the manager nor the employees _____ available right now.",
+        options: ["is", "are", "be", "was"],
+        correct: 1
+      },
+      {
+        q: "Despite _____ hard, he didn't pass the exam.",
+        options: ["studying", "he studied", "to study", "study"],
+        correct: 0
       }
     ];
 
@@ -542,10 +556,10 @@
       const progress = ((currentQ) / testQuestions.length) * 100;
       document.getElementById('progressFill').style.width = progress + '%';
 
-      let html = `<h3 style="margin-bottom: 15px; font-size: 18px;">السؤال ${currentQ + 1}: ${qObj.q}</h3>`;
+      let html = `<h3 style="margin-bottom: 15px; font-size: 18px;">السؤال ${currentQ + 1} من ${testQuestions.length}: <br><span dir="ltr" style="display:inline-block; margin-top:5px;">${qObj.q}</span></h3>`;
       
       qObj.options.forEach((opt, index) => {
-        html += `<button class="option-btn" onclick="selectAnswer(${index})">${opt}</button>`;
+        html += `<button class="option-btn" dir="ltr" onclick="selectAnswer(${index})">${opt}</button>`;
       });
 
       document.getElementById('quizBody').innerHTML = html;
@@ -564,8 +578,10 @@
     function showResult() {
       document.getElementById('progressFill').style.width = '100%';
       let level = "مبتدئ (A1)";
-      if (score === 2 || score === 3) level = "متوسط (B1)";
-      if (score === 4) level = "متقدم (B2/C1)";
+      if (score >= 3 && score <= 4) level = "مبتدئ مرتفع (A2)";
+      else if (score >= 5 && score <= 6) level = "متوسط (B1)";
+      else if (score >= 7 && score <= 8) level = "فوق المتوسط (B2)";
+      else if (score >= 9) level = "متقدم (C1)";
 
       document.getElementById('quizBody').innerHTML = `
         <div style="text-align: center; padding: 10px 0;">
@@ -604,7 +620,7 @@
     function getBotReply(msg) {
       msg = msg.toLowerCase();
       if (msg.includes('مرحبا') || msg.includes('هلا') || msg.includes('hi')) return "أهلاً وسهلاً بك في منصة WAMD! كيف أستطيع مساعدتك اليوم؟";
-      if (msg.includes('قواعد') || msg.includes('grammar')) return "يمكنك البدء بدرس الأزمات الأساسية مثل Present Simple!";
+      if (msg.includes('قواعد') || msg.includes('grammar')) return "يمكنك البدء بدرس الأزمنة الأساسية مثل Present Simple!";
       if (msg.includes('مستوى') || msg.includes('اختبار')) return "أنصحك ببدء اختبار تحديد المستوى من الزر الذهبي بالأعلى!";
       return "سؤال ممتاز! يسعدني إجابتك وتوجيهك لممارستها بطلاقة.";
     }
